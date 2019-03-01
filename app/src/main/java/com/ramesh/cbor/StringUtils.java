@@ -43,7 +43,7 @@ public class StringUtils {
         return bts;
     }
 
-    public static SecureRandom randomId(int len) {
+    public static RandomByte randomId(int len) {
         char[] text = new char[len];
         String possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
@@ -53,8 +53,8 @@ public class StringUtils {
         SecureRandom random = new SecureRandom();
         byte bytes[] = randomString.getBytes();
         random.nextBytes(bytes);
-        String s = android.util.Base64.encodeToString(bytes, Base64.CRLF|Base64.NO_CLOSE|Base64.NO_PADDING|Base64.NO_WRAP);
-        return random;
+        String s = android.util.Base64.encodeToString(bytes, Base64.CRLF | Base64.NO_CLOSE | Base64.NO_PADDING | Base64.NO_WRAP);
+        return new RandomByte(random, s);
 
     }
 
